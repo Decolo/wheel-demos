@@ -56,7 +56,7 @@ a {
     -moz-transform: translateY(0); } }
 html,
 body {
-  font-size: 40px;
+  font-size: 15px;
   height: 1vh;
   width: 100%;
   background-color: #e0e0e0;
@@ -70,7 +70,7 @@ body {
     list-style: none; }
   html .tab,
   body .tab {
-    width: 20rem;
+    width: 18rem;
     height: 30rem;
     position: fixed;
     top: 50%;
