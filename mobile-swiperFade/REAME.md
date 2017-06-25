@@ -1,0 +1,2 @@
+用css3和原生js实现的移动设备上的滑动翻页（fadeIn和fadeOut效果）的demo。
+

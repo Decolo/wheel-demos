@@ -14,6 +14,7 @@ class Tab {
         this.$tabHeader.on('click', 'li', (event) => {
             let $li = $(event.currentTarget)
             let index = $li.index()
+            console.log(event.currentTarget)
             this.$tabContent.children().removeClass('active')
             this.$tabHeader.children().removeClass('active')
             this.$category.removeClass('active')
