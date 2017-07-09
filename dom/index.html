@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        .outer {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+        }
+        
+        .inner1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        
+        .inner2 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        
+        .inner3 {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner1">
+            <div class="inner2">
+                <p class="inner3"></p>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+    <script>
+        var outer = document.querySelectorAll('.outer')[0]
+        var inner1 = document.querySelectorAll('.inner1')[0]
+        var inner2 = document.querySelectorAll('.inner2')[0]
+        var inner3 = document.querySelectorAll('.inner3')[0]
+        dom.on(outer, 'click', '.inner3', function(event) {
+                console.log(event)
+                console.log(this)
+                console.log(event.target)
+            })
+            // console.log(dom.uniqueClass(inner1, 'active'))
+    </script>
+</body>
+
+</html>

@@ -1,37 +1,29 @@
-// var $ = require('jquery')
 class Tab {
-    constructor(selector) {
-        let $container = $(selector)
-        this.ctWidth = $container.width()
-        this.$tabHeader = $container.find('.tab-header')
-        this.$tabContent = $container.find('.tab-content')
-        this.$picBp = this.$tabContent.find('.pic-bp')
-        this.$category = this.$tabHeader.find('.category')
-        this.bindEvent()
-
+    constructor(options) {
+        let defaultOptions = {
+            element: null,
+            navSelector: '[data-role="tab-nav"]',
+            paneSelector: '[data-role="tab-pane"]',
+            activeClassName: 'active'
+        }
+        this.options = Object.assign({}, defaultOptions, options)
+        this.bindEvent().setDefault()
     }
     bindEvent() {
-        this.$tabHeader.on('click', 'li', (event) => {
-            let $li = $(event.currentTarget)
-            let index = $li.index()
-            console.log(event.currentTarget)
-            this.$tabContent.children().removeClass('active')
-            this.$tabHeader.children().removeClass('active')
-            this.$category.removeClass('active')
-            this.$category.eq(index).addClass('active')
-            this.$tabContent.children().eq(index).addClass('active')
-            $li.addClass('active')
-                // console.log(this.ctWidth)
-            this.$tabContent.css({
-                overflow: 'hidden'
+        if (!this.options.element) {
+            throw new Eroor('element is required')
+        } else {
+            dom.on(this.options.element, 'click', `${this.options.navSelector}>li`, (event, eventTarget) => {
+                dom.uniqueClass(eventTarget, this.options.activeClassName)
+                let index = dom.index(eventTarget)
+                let panes = this.options.element.querySelectorAll(this.options.paneSelector)[0].children
+                dom.uniqueClass(panes[index], this.options.activeClassName)
             })
-            this.$picBp.eq(index).css({
-                position: 'absolute',
-                left: this.ctWidth
-            })
-            this.$picBp.eq(index).animate({
-                left: 0
-            }, 200)
-        })
+        }
+        return this
+    }
+    setDefault() {
+        this.options.element.querySelector(`${this.options.navSelector}>li:first-child`).click()
+        return this
     }
 }

@@ -9,7 +9,7 @@
 <body>
     <div class="tab">
 
-        <ul class="tab-content">
+        <ul class="tab-content" data-role="tab-pane">
             <li class="active">
                 <div class="container">
                     <div class="pic-show"></div>
@@ -39,8 +39,8 @@
                 </div>
             </li>
         </ul>
-        <ul class="tab-header">
-            <li class="active">
+        <ul class="tab-header" data-role="tab-nav">
+            <li>
                 <i class="iconfont icon-book">&#xe608;</i>
                 <p class="category active">book</p>
             </li>
@@ -59,9 +59,12 @@
         </ul>
 
     </div>
-    <script src="./Tab.js"></script>
+    <script src="../dom/index.js"></script>
+    <script src=" ./Tab.js "></script>
     <script>
-        new Tab('.tab')
+        new Tab({
+            element: document.querySelectorAll('.tab')[0]
+        })
     </script>
 </body>
 
