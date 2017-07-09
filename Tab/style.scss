@@ -130,7 +130,7 @@ body {
                     font-size: .5rem;
                     display: none;
                 }
-                .category.active {
+                &.active>.category {
                     display: block;
                     -webkit-animation: bounceInUp .2s .4s ease both;
                     -moz-animation: bounceInUp .2s .4s ease both;
