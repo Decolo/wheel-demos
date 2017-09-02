@@ -1,0 +1,23 @@
+{
+  "name": "wheels",
+  "version": "1.0.0",
+  "description": "几个模块的demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Decolo/wheel-demos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Decolo/wheel-demos/issues"
+  },
+  "homepage": "https://github.com/Decolo/wheel-demos#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}

@@ -46,12 +46,15 @@
         var inner1 = document.querySelectorAll('.inner1')[0]
         var inner2 = document.querySelectorAll('.inner2')[0]
         var inner3 = document.querySelectorAll('.inner3')[0]
-        dom.on(outer, 'click', '.inner3', function(event) {
-                console.log(event)
-                console.log(this)
-                console.log(event.target)
-            })
-            // console.log(dom.uniqueClass(inner1, 'active'))
+        // dom.on(outer, 'click', '.inner2', function(event) {
+        //         console.log(this)
+        //     })
+        dom.on(outer, 'click', function(event){
+            console.log(event.target)
+            console.log(this)
+        })
+        // dom.on('click', 'inner2')
+        // console.log(dom.uniqueClass(inner1, 'active'))
     </script>
 </body>
 

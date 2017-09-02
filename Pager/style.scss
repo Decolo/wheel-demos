@@ -1,0 +1,75 @@
+$boxShadow1:0px 2px 1px -1px #5C9F83;
+$boxShadow2:0px 1px 1px 0px #5C9F83;
+$boxShadowCur:0px 2px 1px 0px #609B83;
+$fontColor1:white;
+$buttonColor:linear-gradient(to bottom, #9FCFF2 0%, #8DC6F0 100%);
+$buttonColorCur: linear-gradient(to bottom, #B3DAF7 0%, #8FC7F0 100%);
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 1vh;
+    font-size: 14px;
+    background-color: #72BDB6;
+}
+
+@mixin clearfix {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+ol,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.pager {
+    margin-top: 100px;
+    width: 960px;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn-pre {
+        margin-right: 20px;
+    }
+    .btn-next {
+        margin-left: 20px;
+    }
+    ol::after {
+        @include clearfix
+    }
+}
+
+button {
+    padding: 10px 16px 10px 16px;
+    border-radius: 8px;
+    color: $fontColor1;
+    font-size: 1rem;
+    background: $buttonColor;
+    border-style: none;
+    box-shadow: $boxShadow1;
+}
+
+li {
+    float: left;
+    font-size: 1rem;
+    width: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 50%;
+    background: $buttonColor;
+    text-align: center;
+    color: $fontColor1;
+    box-shadow: $boxShadow2;
+    &.current-page {
+        background: $buttonColorCur;
+        box-shadow: $boxShadowCur;
+    }
+}

@@ -1,0 +1,19 @@
+<DOCTYPE html>
+<head>
+  <meta charse="utf-8">
+  <title>TextArea</title>
+  <script src="../dom/index.js"></script>
+  <script src="/Users/decolo/Modules/wheels/TextArea/AutoHeightTextArea.js"></script>
+  <style>
+    textarea::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<body>
+  <textarea></textarea>
+  <script>
+    let textarea = document.getElementsByTagName('textarea')[0]
+    new AutoHeightTextArea(textarea)
+  </script>
+</body>
+<head>
