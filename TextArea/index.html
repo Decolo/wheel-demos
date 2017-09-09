@@ -3,14 +3,29 @@
   <meta charse="utf-8">
   <title>TextArea</title>
   <script src="../dom/index.js"></script>
-  <script src="/Users/decolo/Modules/wheels/TextArea/AutoHeightTextArea.js"></script>
+  <script src="/Users/decolo/Modules/wheels/TextArea/autoHeightTextArea.js"></script>
   <style>
+    .textarea-container{
+      text-align: center;
+    }
+    textarea{
+      margin: 0 auto;
+      width: 300px;
+      border-radius: 10px;
+      outline: none;
+      padding: 10px;
+      /*background: #ccc;*/
+      border: none;
+      box-shadow: 0 1px 4px #999;
+    }
     textarea::-webkit-scrollbar {
       display: none;
     }
   </style>
 <body>
-  <textarea></textarea>
+  <div class="textarea-container">
+    <textarea></textarea>
+  </div>
   <script>
     let textarea = document.getElementsByTagName('textarea')[0]
     new AutoHeightTextArea(textarea)

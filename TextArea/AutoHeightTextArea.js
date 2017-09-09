@@ -8,7 +8,6 @@ class AutoHeightTextArea {
   }
   bindEvent() {
     dom.on(this.element, 'scroll', event => {
-      console.log('what?')
       let eventTarget = event.target
       if( eventTarget.scrollHeight > eventTarget.clientHeight ) {
         eventTarget.style.height = eventTarget.scrollHeight + 'px'
