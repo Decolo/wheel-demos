@@ -110,14 +110,17 @@ var dom = (function() {
 
   /**
    * 给类数组对象的每一项，执行一个回调
-   * @param                {NodeList} nodeList 目标元素
-   * @param                {String} className 选择器字符串
+   * @param                {HTMLElement} element 目标元素
+   * @param                {PlainObject} obj 选择器字符串
    */
-  function every(nodeList, fn) {
-    for (let i = 0; i < nodeList.length; i++) {
-      fn.call(nodeList[i], nodeList[i])
+  function css(element, obj) {
+    for(let key of Object.keys(obj)){
+      if (typeof obj[key] !== 'string') {
+        return 
+      } 
+      element.style[key] = obj[key]
     }
-    return nodeList
+    return element
   }
 
   /**
@@ -163,14 +166,66 @@ var dom = (function() {
   function find(element, selector) {
     if (typeof selector === 'string') {
       const elements = element.querySelectorAll(selector)
-      if (elements.length === 1) {
+      if (element.length < 1) {
+        return []
+      } else if (elements.length === 1) {
         return elements[0]
       } else {
         return elements
       }
     } else {
-      return
+      throw new Error('selector should be string')
     }
+  }
+
+ /**
+   * 若context为undefined，就输出元素及其后台元素中的合并文本
+   * 若context为String实例, 将元素的文本设成context, 并且会删除后台元素 
+   * @param                {HTMLElement} element 目标元素
+   * @param                {Number} minRange 最小滑动距离
+   * @param                {Function} fn 回调函数
+   */
+  function swiper(element, minRange = 10, fn) {
+    let xStart, yStart, xDiff, yDiff
+
+    element.addEventListener('touchstart', event => {
+      xStart = event.touches[0].clientX
+      yStart = event.touches[0].clientY
+    })
+    
+    element.addEventListener('touchmove', event => {
+      if (!xStart || !yStart) {
+        return
+      }
+
+      xDiff = event.touches[0].clientX - xStart
+      yDiff = event.touches[0].clientY - yStart
+
+      if (Math.abs(xDiff) < minRange && Math.abs(yDiff) < minRange) {
+        return 
+      }
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        // 左右滑动
+        if (xDiff > 0) {
+          console.log('right')
+          fn.call(element, event, 'right')
+        } else {
+          console.log('left')
+          fn.call(element, event, 'left')
+        }
+      } else {
+        // 上下滑动
+        if (yDiff > 0) {
+          console.log('down')
+          fn.call(element, event, 'down')
+        } else {
+          console.log('up')
+          fn.call(element, event, 'up')
+        }
+      }
+      xStart = yStart = xDiff = yDiff = null
+    })
+
   }
 
   return {
@@ -182,6 +237,8 @@ var dom = (function() {
     index,
     text,
     html,
-    find
+    find,
+    css,
+    swiper
   }
 }())
