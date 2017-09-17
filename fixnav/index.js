@@ -30,10 +30,10 @@ class FixNav {
 
 
   bindEvent() {
-    this.pageHeightHalf = Math.ceil(this.pageHeight / 2)
+    // this.pageHeightHalf = Math.ceil(this.pageHeight / 2)
     dom.on(document, 'scroll', () => {
       let scrollTop = window.scrollY
-      let index = Math.floor(scrollTop / this.pageHeightHalf)
+      let index = Math.round(scrollTop / this.pageHeight) 
       console.log(index)
       Array.from(this.navList).forEach(item => {
         item.classList.remove('active')
