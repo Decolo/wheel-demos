@@ -5,3 +5,4 @@
 3. Select
 4. Mobile-swiperFade
 5. Fullpage
+6. FixNav

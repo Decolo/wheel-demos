@@ -178,7 +178,7 @@ var dom = (function() {
     }
   }
 
- /**
+ /** 滑动事件
    * 若context为undefined，就输出元素及其后台元素中的合并文本
    * 若context为String实例, 将元素的文本设成context, 并且会删除后台元素 
    * @param                {HTMLElement} element 目标元素
@@ -225,7 +225,30 @@ var dom = (function() {
       }
       xStart = yStart = xDiff = yDiff = null
     })
+  }
 
+  /** 给一个父元素添加子元素
+   * @param     {HTMLElement}   parent
+   * @param     {HTMLElement}   children
+   */
+  function append(parent, children) {
+    if (children.length === undefined) {
+      children = [children]
+    }
+    for (let i = 0; i < children.length; i++) {
+      parent.appendChild(children[i])
+    }
+    return parent
+  }
+
+  /** 给每一项元素执行一个函数
+   * @param     {NodeList}   nodeList
+   * @param     {Function}   fn
+   */
+  function each(nodeList, fn) {
+    Array.from(nodeList).forEach((item, index) => {
+      fn(item, index)
+    })
   }
 
   return {
@@ -239,6 +262,8 @@ var dom = (function() {
     html,
     find,
     css,
-    swiper
+    swiper,
+    append,
+    each
   }
 }())
