@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+</head>
+<body>
+  <div class="container"></div>
+  <script>
+      class Counter{
+        constructor(container, second){
+          this.container = document.querySelector(container)
+          this.second = second
+          this.init(this.second)
+          let clock = setInterval(() => {
+            if (this.second === 1) clearInterval(clock)
+            this.second--
+            this.init(this.second)
+          }, 1000)
+        }
+        init(second) {
+          let day = Math.floor(second / 3600)
+          let min = Math.floor((second % 3600) / 60 )
+          let sec = (second % 3600) % 60
+          let dayStr = day < 10? '0' + day : day.toString()
+          let minStr = min < 10? '0' + min : min.toString()
+          let secStr = sec < 10? '0' + sec : sec.toString()
+          let templateStr = `<div>${dayStr}:${minStr}:${secStr}</div>`
+          this.container.innerHTML = templateStr
+        }
+      }
+      new Counter('.container', 10)
+  </script>
+</body>
+</html>
