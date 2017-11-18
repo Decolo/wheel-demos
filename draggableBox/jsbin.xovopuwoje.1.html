@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2017 by anonymous (http://js.jirengu.com/xovopuwoje/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+#div2
+{
+    position:absolute;
+    width:100px;
+    height:100px;
+    border:1px solid #333333;
+    background-color:#777788;
+    text-align:center;
+    line-height:400%;
+    font-size:13px;
+    left:80px;
+    top:20px;
+}
+</style>
+</head>
+<body>
+ <div id="div2">支持拖拽</div>
+<script id="jsbin-javascript">
+var _move=false;//移动标记
+var _x,_y;//鼠标离控件左上角的相对位置
+$(document).ready(function(){
+    $("#div2").click(function(){
+        //alert("click");//点击（松开后触发）
+        }).mousedown(function(e){
+        _move=true;
+        _x=e.pageX-parseInt($("#div2").css("left"));
+        _y=e.pageY-parseInt($("#div2").css("top"));
+        $("#div2").fadeTo(20, 0.25);//点击后开始拖动并透明显示
+    });
+    $(document).mousemove(function(e){
+        if(_move){
+            console.log(1)
+            var x=e.pageX-_x;//移动时根据鼠标位置计算控件左上角的绝对位置
+            var y=e.pageY-_y;
+            $("#div2").css({top:y,left:x});//控件新位置
+        }
+    }).mouseup(function(){
+    _move=false;
+    $("#div2").fadeTo("fast", 1);//松开鼠标后停止移动并恢复成不透明
+  });
+});
+</script>
+</body>
+</html>

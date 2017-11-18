@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/bufufisafo/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+*{
+  padding: 0;
+  margin: 0;
+}
+button{
+  background-color: white;
+}
+dialog{
+  width: 200px;
+  height: 120px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px #666;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+.row{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cover{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(111,111,111,.1);
+  display: none;
+}
+</style>
+</head>
+<body>
+  <button>open</button>
+  <div class="cover">
+    <dialog>
+      <div class="row">
+        <button class="comfirm">comfirm</button>
+        <button class="cancel">concel</button>        
+      </div>
+    </dialog>    
+  </div>
+
+<script id="jsbin-javascript">
+let btn = document.querySelector('button')
+let dialog = document.querySelector('dialog')
+let cover = document.querySelector('.cover')
+btn.addEventListener('click', event => {
+  cover.style.display = 'block'
+  dialog.style.display = 'block'
+})
+
+let cancelBtn = document.querySelector('.cancel')
+cancelBtn.addEventListener('click', event => {
+  cover.style.display = 'none'
+  dialog.style.display = "none"
+})
+
+cover.addEventListener('click', event => {
+  if (event.target === cover) {
+    cover.style.display = 'none'
+    dialog.style.display = "none"
+  }
+})
+
+
+</script>
+</body>
+</html>

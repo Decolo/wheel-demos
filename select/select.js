@@ -17,18 +17,35 @@ class Select {
     this.bindEvent()
   }
   init() {
+    // first item
     dom.text(this.selectButton, this.dataSource[0])
+    this.itemHeight = dom.height(this.selectButton)
+    dom.height(this.selectItems, this.itemHeight) 
+  }
+  render() {
+    // template items
     const listStr = this.dataSource.map(item => `<li>${item}</li>`).join('')
+    // render items
     dom.html(this.selectItems, listStr)
   }
   bindEvent() {
     dom.on(this.selectButton, 'click', () => {
       event.stopPropagation()
+      dom.css(this.selectButton, {
+        display: 'none'
+      })
       dom.addClass(this.selectItems, 'active')
+      dom.height(this.selectItems, this.itemHeight * this.dataSource.length)
+      this.render()
     })
     dom.on(this.selectItems, 'click', 'li', event => {
-      
       dom.text(this.selectButton, dom.text(event.target))
+      // reset itemHeight
+      dom.height(this.selectItems, this.itemHeight)
+      dom.html(this.selectItems, '')
+      dom.css(this.selectButton, {
+        display: 'block'
+      })
     })
     dom.on(document, 'click', () => {
       dom.removeClass(this.selectItems, 'active')

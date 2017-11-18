@@ -37,10 +37,16 @@
           top: 0;
           padding: 2px;
           box-shadow: 0 1px 4px #aaa;
-          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1
       }
-      .select-items.active{
-          display: block;
+      .active{
+          transition: height .4s ease;
+          -moz-transition: height .4s ease;
+          -webkit-transition: height .4s ease;
+          -o-transition: height .4s ease;
       }
       .select-items>li:hover{
           background-color: #eee;

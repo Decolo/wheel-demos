@@ -29,6 +29,11 @@
             height: 50px;
             background-color: pink;
         }
+        #test{
+            border: 1px solid red;
+            width: 200px;
+            height: 200px;
+        }
     </style>
 </head>
 
@@ -40,6 +45,7 @@
             </div>
         </div>
     </div>
+    <div id="test">123</div>
     <script src="index.js"></script>
     <script>
         var outer = document.querySelectorAll('.outer')[0]
@@ -53,6 +59,7 @@
             console.log(event.target)
             console.log(this)
         })
+        console.log(dom.width(test, 100))
         // dom.on('click', 'inner2')
         // console.log(dom.uniqueClass(inner1, 'active'))
     </script>

@@ -250,6 +250,46 @@ var dom = (function() {
       fn(item, index)
     })
   }
+  
+  /**
+   * @param     {HTMLElement}   element
+   * @param     {Number}        number
+   */
+  function width(element, num) {
+    let widthStr
+    switch (arguments.length) {
+    case 1: 
+      widthStr = getComputedStyle(element)['width']
+      return Number(widthStr.substring(0, widthStr.length - 2))
+    case 2:
+      element.style.width = num + 'px'
+      return element  
+    }
+  }
+
+  /**
+   * @param     {HTMLElement}   element
+   * @param     {Number}        number
+   */
+  function height(element, num) {
+    let widthStr, widthNum
+    if (element.nodeType !== 1) {
+      throw new Error('first item of arguments is not HTMLElement')
+    }
+    switch (arguments.length) {
+    case 1: 
+      widthStr = getComputedStyle(element)['height']
+      widthNum = Number(widthStr.substring(0, widthStr.length - 2)) 
+      if (isNaN(widthNum)) {
+        return null
+      } else {
+        return widthNum
+      }
+    case 2:
+      element.style.height = num + 'px'
+      return element  
+    }
+  }
 
   return {
     on,
@@ -264,6 +304,8 @@ var dom = (function() {
     css,
     swiper,
     append,
-    each
+    each,
+    width,
+    height
   }
 }())
