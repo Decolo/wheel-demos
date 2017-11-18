@@ -12,7 +12,7 @@ class FixNav {
     this.init(this.items).bindEvent()
   }
 
-  init(items) {
+  init(items) {    
     const liArr = items.map(item => `<li>${String(item)}</li>`)
     const ulTemplate = `
       <ul>
@@ -34,13 +34,16 @@ class FixNav {
     dom.on(document, 'scroll', () => {
       let scrollTop = window.scrollY
       let index = Math.round(scrollTop / this.pageHeight) 
-      console.log(index)
       Array.from(this.navList).forEach(item => {
         item.classList.remove('active')
         // dom.removeClass(item, 'active')
       })
       this.navList[index].classList.add('active')
       // dom.addClass(this.navList[index], 'active')
+    })
+    dom.on(this.container, 'click', 'li', event => {
+      let index = dom.index(event.target)
+      window.scrollTo(0, index * this.pageHeight)
     })
   }
 }
