@@ -38,6 +38,7 @@ button {
   box-shadow: 0px 2px 1px -1px #5C9F83; }
 
 li {
+  cursor: pointer;
   float: left;
   font-size: 1rem;
   width: 40px;
@@ -51,7 +52,8 @@ li {
   color: white;
   box-shadow: 0px 1px 1px 0px #5C9F83; }
   li.current-page {
-    background: linear-gradient(to bottom, #B3DAF7 0%, #8FC7F0 100%);
+    background: #cce0f5;
+    color: #588abe;
     box-shadow: 0px 2px 1px 0px #609B83; }
 
 /*# sourceMappingURL=style.css.map */
